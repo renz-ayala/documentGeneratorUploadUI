@@ -1,0 +1,2 @@
+- npm create vite@latest <project-name> -- --template react
+- npm install -D typescript @types/react @types/react-dom
