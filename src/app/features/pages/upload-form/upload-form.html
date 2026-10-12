@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="header">
+    <h2 class="title">Digitalizar Documento</h2>
+    <p class="subtitle">Sube una imagen para extraer su estructura con IA</p>
+  </div>
+
+  <form (submit)="handleSubmit($event)" class="form">
+    <div class="upload-zone">
+      <input
+        id="file-input"
+        type="file"
+        accept="image/*"
+        (change)="handleFileChange($event)"
+        [disabled]="isLoading()"
+        class="hidden-input"
+      />
+      <label for="file-input" class="file-label">
+        <span class="upload-icon">📁</span>
+        @if (selectedFile()) {
+          <span> {{ selectedFile()?.name }}</span>
+        } @else {
+          <span>Haz clic para seleccionar un archivo'</span>
+        }
+      </label>
+    </div>
+
+    @if (previewUrl()) {
+      <div class="preview-container">
+        <span class="subtext">Previsualización del archivo</span>
+        <img [src]="previewUrl()" alt="Vista previa" class="preview-image" />
+      </div>
+    }
+
+    @if (errorMessage()) {
+      <div class="error-box">
+        <span>⚠️ {{ errorMessage() }}</span>
+      </div>
+    }
+
+    <button
+      type="submit"
+      [disabled]="!selectedFile || isLoading"
+      [class.button-disabled]="!selectedFile() || isLoading()"
+      class="button"
+    >
+      @if (isLoading()) {
+        Analizando con IA...
+      } @else {
+        Extraer Estructura HTML
+      }
+    </button>
+  </form>
+</div>
