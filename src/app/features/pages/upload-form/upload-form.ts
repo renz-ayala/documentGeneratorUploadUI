@@ -1,10 +1,11 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, input, output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-upload-form',
   imports: [],
   templateUrl: './upload-form.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './upload-form.css',
 })
 export class UploadForm {
@@ -12,7 +13,7 @@ export class UploadForm {
   htmlExtracted = output<string>();
 
   selectedFile = signal<File | null>(null);
-  previewUrl = signal<string | null >(null);
+  previewUrl = signal<string | null>(null);
   isLoading = signal(false);
   errorMessage = signal('');
 

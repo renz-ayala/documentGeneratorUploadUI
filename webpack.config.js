@@ -1,6 +1,9 @@
-const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
+const {
+  shareAll,
+  withModuleFederationPlugin,
+} = require('@angular-architects/module-federation/webpack');
 
-module.exports = withModuleFederationPlugin({
+const webpackConfig = withModuleFederationPlugin({
   name: 'ui-upload',
   filename: 'remoteEntry.js',
   exposes: {
@@ -10,3 +13,9 @@ module.exports = withModuleFederationPlugin({
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
 });
+
+webpackConfig.watchOptions = {
+  ignored: /node_modules|\.angular|dist/,
+};
+
+module.exports = webpackConfig;
