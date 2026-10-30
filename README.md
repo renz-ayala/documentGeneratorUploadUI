@@ -1,6 +1,6 @@
 # UiUpload
 ```bash
-ng add @angular-architects/module-federation --project ui-download --port 12102 --type remote
+ng add @angular-architects/module-federation --project ui-uload --port 12101 --type remote
 ```
 
 # Sistema de lectura y exportación de Documentos mediante IA
