@@ -4,13 +4,13 @@
     <p class="subtitle">Sube una imagen para extraer su estructura con IA</p>
   </div>
 
-  <form (submit)="handleSubmit($event)" class="form">
+  <form (submit)="extractHtml($event)" class="form">
     <div class="upload-zone">
       <input
         id="file-input"
         type="file"
         accept="image/*"
-        (change)="handleFileChange($event)"
+        (change)="selectFile($event)"
         [disabled]="isLoading()"
         class="hidden-input"
       />
@@ -39,7 +39,7 @@
 
     <button
       type="submit"
-      [disabled]="!selectedFile || isLoading"
+      [disabled]="!selectedFile() || isLoading()"
       [class.button-disabled]="!selectedFile() || isLoading()"
       class="button"
     >
